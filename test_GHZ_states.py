@@ -1,6 +1,8 @@
 from pyquil import Program
 from pyquil.gates import *
 from pyquil.api import WavefunctionSimulator
+from pyquil import get_qc
+import numpy as np
 
 def ghz_state(qubits):
     """Create a GHZ state on the given list of qubits by applying
@@ -17,3 +19,18 @@ print(program)
 
 wfn = WavefunctionSimulator().wavefunction(program)
 print(wfn)
+
+qc = get_qc('3q-qvm')
+print(qc)
+
+print(qc.qubits())
+
+
+bitstrings = qc.run_and_measure(program, trials=10)
+
+print(bitstrings)
+
+bitstring_array = np.vstack(bitstrings[q] for q in qc.qubits()).T
+sums = np.sum(bitstring_array, axis=1)
+
+print(sums)
