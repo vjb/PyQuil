@@ -1,0 +1,2 @@
+
+These scripts start the engine and compiler.  They are part of the Forrest SDK, which needs to be downloaded from Rigetti.  As of March 4th, 2019, that means making a request from the Rigetti website.
