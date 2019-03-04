@@ -3,6 +3,8 @@ from pyquil.gates import *
 from pyquil.api import WavefunctionSimulator
 from pyquil import get_qc
 import numpy as np
+from pyquil import list_quantum_computers
+
 
 def ghz_state(qubits):
     """Create a GHZ state on the given list of qubits by applying
@@ -34,3 +36,14 @@ bitstring_array = np.vstack(bitstrings[q] for q in qc.qubits()).T
 sums = np.sum(bitstring_array, axis=1)
 
 print(sums)
+
+print(list_quantum_computers())
+
+
+import networkx as nx
+nx.draw(qc.qubit_topology())
+
+from matplotlib import pyplot as plt
+_ = plt.title('3q-qvm', fontsize=18)
+
+plt.show()
